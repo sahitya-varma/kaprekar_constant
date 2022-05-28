@@ -1,0 +1,51 @@
+
+#Taking a number from the user
+number = int(input("Take any four-digit number, using at least two different digits \n"))
+#print("You have entered", taking_a_number)
+
+unique_number_set = [1111,2222,3333,4444,5555,6666,7777,8888,9999]
+
+if number in unique_number_set:
+    print("Dear user, you have entered repeating integers (e.g. 7777) kindly enter a valid 4 digit number")
+    exit()
+
+if number < 1000 or number > 9998:
+    print("kindly enter valid 4 digit number")
+    exit()
+
+
+
+kap_itr = 0
+
+def converting_asc_desc(taking_a_number_2):
+    #converting the given number into the list
+    list1 = [str(x) for x in str(taking_a_number_2)]
+    #print(list1)
+
+    # creating descending order
+    descending_list = sorted(list1, reverse=True)
+    # print(descending_list)
+    descending_order_integer = int("".join(descending_list))
+    print(descending_order_integer)
+
+    #creating ascending order number
+    ascending_list = sorted(list1)
+    #print(ascending_list)
+    ascending_order_integer = int("".join(ascending_list))
+    print(ascending_order_integer)
+
+    return descending_order_integer-ascending_order_integer
+
+def kaprekar_circle(a):
+    kap_itr=0
+    print("entered kaprekar circle")
+    while a!=6174:
+        number1=converting_asc_desc(a)
+        print("substracted result from desc to asc is: ", number1)
+        a=number1
+        kap_itr=kap_itr+1
+        if(a==6174):
+            break
+    print("kaprekar iteration count is: ", kap_itr)
+
+kaprekar_circle(number)
